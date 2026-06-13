@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 import { program } from 'commander';
 import gendiff from '../src/index.js';
-import fs from 'fs';
-import path from 'path';
+import path from 'node:path';
 
 program
   .name('gendiff')

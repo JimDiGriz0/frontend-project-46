@@ -1,13 +1,13 @@
-import fs from 'fs';
+import fs from 'node:fs';
 //TODO удалить es-toolkit
 
-export default (path1, path2) => {
+const gendiff = (path1, path2) => {
   const makeJsonObj = (filePath) =>
     JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
   const getCommonArrUniqKeysSorted = (keysArr1, keysArr2) => {
     const set = new Set(keysArr1.concat(keysArr2));
-    return [...set].toSorted();
+    return [...set].toSorted((a, b) => a.localeCompare(b));
   };
 
   const file1 = makeJsonObj(path1);
@@ -35,3 +35,5 @@ export default (path1, path2) => {
   }, '');
   return `{\n${result}}`;
 };
+
+export default gendiff;
