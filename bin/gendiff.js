@@ -4,8 +4,6 @@ import gendiff from '../src/index.js';
 import fs from 'fs';
 import path from 'path';
 
-console.log(`${process.cwd()}`);
-
 program
   .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
@@ -18,7 +16,11 @@ program
 
     const absoluteFilePath1 = makeAbsolutePath(filepath1);
     const absoluteFilePath2 = makeAbsolutePath(filepath2);
-    const temp = gendiff(absoluteFilePath1, absoluteFilePath2);
+    console.log(gendiff(absoluteFilePath1, absoluteFilePath2));
   });
 
 program.parse();
+
+// TODO ДЛЯ АВТОКОМПЛИТА ДОБАВИТЬ В ОПИСАНИЕ
+// echo "complete -A file gendiff" >> ~/.bashrc
+// source ~/.bashrc
