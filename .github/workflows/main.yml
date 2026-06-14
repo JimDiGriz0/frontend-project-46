@@ -18,6 +18,6 @@ jobs:
       - run: make test-coverage
 
       - name: SonarCloud Scan
-        uses: 'SonarSource/sonarcloud-github-action@e3531b7d5f71e6659c0784be199e89d130ec7737'
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
