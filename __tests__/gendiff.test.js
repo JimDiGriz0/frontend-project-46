@@ -22,10 +22,3 @@ test.each(formats)('current format %s', (format) => {
   const actual = gendiff(file1, file2)
   expect(actual).toEqual(expected.trim())
 })
-
-// test('gendiff test', () => {
-//   const file1 = getFixturePath('file1.json')
-//   const file2 = getFixturePath('file2.json')
-//   const actual = gendiff(file1, file2)
-//   expect(actual).toEqual(expected.trim())
-// })
