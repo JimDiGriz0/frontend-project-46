@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { program } from 'commander';
-import gendiff from '../src/index.js';
-import path from 'node:path';
+import { program } from 'commander'
+import gendiff from '../src/index.js'
+import path from 'node:path'
 
 program
   .name('gendiff')
@@ -10,15 +10,14 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format')
   .action((filepath1, filepath2) => {
-    const makeAbsolutePath = (filepath) =>
-      path.resolve(process.cwd(), filepath);
+    const makeAbsolutePath = filepath => path.resolve(process.cwd(), filepath)
 
-    const absoluteFilePath1 = makeAbsolutePath(filepath1);
-    const absoluteFilePath2 = makeAbsolutePath(filepath2);
-    console.log(gendiff(absoluteFilePath1, absoluteFilePath2));
-  });
+    const absoluteFilePath1 = makeAbsolutePath(filepath1)
+    const absoluteFilePath2 = makeAbsolutePath(filepath2)
+    console.log(gendiff(absoluteFilePath1, absoluteFilePath2))
+  })
 
-program.parse();
+program.parse()
 
 // TODO ДЛЯ АВТОКОМПЛИТА ДОБАВИТЬ В ОПИСАНИЕ
 // echo "complete -A file gendiff" >> ~/.bashrc
