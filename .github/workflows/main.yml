@@ -17,7 +17,7 @@ jobs:
       - run: make lint
       - run: make test-coverage
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarcloud-github-action@0718a45f4cb08e6e5ab5c3033ecdaa64ffbc1f75
+      - name: SonarCloud Scan
+        uses: 'SonarSource/sonarcloud-github-action@e3531b7d5f71e6659c0784be199e89d130ec7737'
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
