@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "commander": "^15.0.0",
-    "es-toolkit": "^1.47.1"
+    "es-toolkit": "^1.47.1",
+    "js-yaml": "^4.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

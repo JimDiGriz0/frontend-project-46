@@ -1,4 +1,4 @@
-[![asciicast](https://asciinema.org/a/JNP9zzP8rNvN7nxp.svg)](https://asciinema.org/a/JNP9zzP8rNvN7nxp)
+[![asciicast](https://asciinema.org/a/wipTKt9dvG1MVGac.svg)](https://asciinema.org/a/wipTKt9dvG1MVGac)
 
 ### Hexlet tests and linter status:
 
