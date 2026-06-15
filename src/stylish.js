@@ -1,7 +1,7 @@
 import { isObject } from 'es-toolkit/compat'
 
 const stringify = (value, depth) => {
-  if (typeof value !== 'object' || value === null) {
+  if (!isObject(value)) {
     return String(value)
   }
 
