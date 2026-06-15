@@ -8,13 +8,15 @@ program
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
   .arguments('<filepath1> <filepath2>')
-  .option('-f, --format <type>', 'output format')
+  .option('-f, --format <type>', 'output format', 'stylish')
   .action((filepath1, filepath2) => {
-    const makeAbsolutePath = filepath => path.resolve(process.cwd(), filepath)
+    const makeAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath)
 
     const absoluteFilePath1 = makeAbsolutePath(filepath1)
     const absoluteFilePath2 = makeAbsolutePath(filepath2)
-    console.log(gendiff(absoluteFilePath1, absoluteFilePath2))
+    console.log(
+      gendiff(absoluteFilePath1, absoluteFilePath2, program.opts().format),
+    )
   })
 
 program.parse()
