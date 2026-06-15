@@ -12,26 +12,38 @@ const formats = ['json', 'yml', 'yaml']
 const getFixturePath = (filename) =>
   path.join(__dirname, '..', '__fixtures__', filename)
 
-let expected
-let expected2
+let expectedStylish
+let expectedPlain
+let expectedJSON
 
 beforeAll(() => {
-  expected = fs.readFileSync(getFixturePath('result1.txt'), 'utf-8')
-  expected2 = fs.readFileSync(getFixturePath('result2.txt'), 'utf-8')
+  expectedStylish = fs.readFileSync(
+    getFixturePath('resultStylish.txt'),
+    'utf-8',
+  )
+  expectedPlain = fs.readFileSync(getFixturePath('resultPlain.txt'), 'utf-8')
+  expectedJSON = fs.readFileSync(getFixturePath('resultJSON.txt'), 'utf-8')
 })
 
 test.each(formats)('stylish: current format %s', (format) => {
   const file1 = getFixturePath(`file1.${format}`)
   const file2 = getFixturePath(`file2.${format}`)
   const actual = gendiff(file1, file2)
-  expect(actual).toEqual(expected.trim())
+  expect(actual).toEqual(expectedStylish.trim())
 })
 
 test.each(formats)('plain: current format %s', (format) => {
   const file1 = getFixturePath(`file1.${format}`)
   const file2 = getFixturePath(`file2.${format}`)
   const actual = gendiff(file1, file2, 'plain')
-  expect(actual).toEqual(expected2.trim())
+  expect(actual).toEqual(expectedPlain.trim())
+})
+
+test.each(formats)('JSON: current format %s', (format) => {
+  const file1 = getFixturePath(`file1.${format}`)
+  const file2 = getFixturePath(`file2.${format}`)
+  const actual = gendiff(file1, file2, 'json')
+  expect(actual).toEqual(expectedJSON.trim())
 })
 
 test('Error cases', () => {

@@ -22,5 +22,7 @@ lint:
 lint-fix:
 	npx eslint . --fix
 
+lint-json:
+	npx eslint . --format json
 
 .PHONY: test
