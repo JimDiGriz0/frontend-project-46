@@ -2,7 +2,8 @@ import gendiff from '../src/index.js'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
-import stylish from '../src/stylish.js'
+import stylish from '../src/formatters/stylish.js'
+import plain from '../src/formatters/plain.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -12,16 +13,25 @@ const getFixturePath = (filename) =>
   path.join(__dirname, '..', '__fixtures__', filename)
 
 let expected
+let expected2
 
 beforeAll(() => {
-  expected = fs.readFileSync(getFixturePath('result.txt'), 'utf-8')
+  expected = fs.readFileSync(getFixturePath('result1.txt'), 'utf-8')
+  expected2 = fs.readFileSync(getFixturePath('result2.txt'), 'utf-8')
 })
 
-test.each(formats)('current format %s', (format) => {
+test.each(formats)('stylish: current format %s', (format) => {
   const file1 = getFixturePath(`file1.${format}`)
   const file2 = getFixturePath(`file2.${format}`)
   const actual = gendiff(file1, file2)
   expect(actual).toEqual(expected.trim())
+})
+
+test.each(formats)('plain: current format %s', (format) => {
+  const file1 = getFixturePath(`file1.${format}`)
+  const file2 = getFixturePath(`file2.${format}`)
+  const actual = gendiff(file1, file2, 'plain')
+  expect(actual).toEqual(expected2.trim())
 })
 
 test('Error cases', () => {
@@ -43,4 +53,5 @@ test('stylish error case', () => {
     },
   ]
   expect(() => stylish(brokenTree)).toThrow()
+  expect(() => plain(brokenTree)).toThrow()
 })
