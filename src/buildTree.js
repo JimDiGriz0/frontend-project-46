@@ -89,7 +89,4 @@ const result = buildTree(
   },
 )
 
-const resultJson = JSON.stringify(result, null, 2)
-console.log(resultJson)
-
 export default buildTree

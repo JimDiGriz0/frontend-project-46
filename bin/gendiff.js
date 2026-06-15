@@ -20,7 +20,3 @@ program
   })
 
 program.parse()
-
-// TODO ДЛЯ АВТОКОМПЛИТА ДОБАВИТЬ В ОПИСАНИЕ
-// echo "complete -A file gendiff" >> ~/.bashrc
-// source ~/.bashrc
